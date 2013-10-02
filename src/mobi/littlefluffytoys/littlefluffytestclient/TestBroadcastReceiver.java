@@ -39,11 +39,11 @@ public class TestBroadcastReceiver extends BroadcastReceiver {
         
         // Construct the notification.
         
-        TelephonyManager mngr = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE); 
-        Funciones.IMEI = mngr.getDeviceId().toString();
+
         
         Notification notification = new Notification(R.drawable.notification, "Locaton updated " + locationInfo.getTimestampAgeInSeconds() + " seconds ago", System.currentTimeMillis());
 
+        
         Intent contentIntent = new Intent(context, TestActivity.class);
         PendingIntent contentPendingIntent = PendingIntent.getActivity(context, 0, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         
@@ -78,7 +78,7 @@ public class TestBroadcastReceiver extends BroadcastReceiver {
 		protected String doInBackground(String... arg0) {
 			// TODO Auto-generated method stub
 		    HttpClient httpclient = new DefaultHttpClient();
-		    HttpPost httppost = new HttpPost("http://cgarciabarrera.no-ip.org:3000/gps_points/manual");
+		    HttpPost httppost = new HttpPost("http://limitless-coast-2034.herokuapp.com/gps_points/manual");
 
 		    try {
 		        // Add your data

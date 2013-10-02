@@ -1,6 +1,7 @@
 package mobi.littlefluffytoys.littlefluffytestclient;
 
 
+
 import com.littlefluffytoys.littlefluffylocationlibrary.LocationInfo;
 import com.littlefluffytoys.littlefluffylocationlibrary.LocationLibrary;
 import com.littlefluffytoys.littlefluffylocationlibrary.LocationLibraryConstants;
@@ -26,7 +27,10 @@ public class TestActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-
+        startService(new Intent(TestActivity.this, TestBroadcastReceiver.class));
+        
+        TelephonyManager mngr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE); 
+        Funciones.IMEI = mngr.getDeviceId().toString();
         
         ((Button) findViewById(R.id.refresh)).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
